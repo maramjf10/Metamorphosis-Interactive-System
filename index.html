@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+<link rel="icon" type="image/png" href="/fav.png" />
+  <title>Metamorphosis </title>
+</head>
+<body>
+  <div id="scene-container"></div>
+  <div class="interface">
+    <header class="top-header">
+      <div class="logo">
+        META<span>MOR</span>PHOSIS
+      </div>
+      <div class="system-status">
+        <span class="status-dot"></span>
+        INTERACTIVE
+      </div>
+    </header>
+    <div class="creature-info">
+      <div class="eyebrow">
+        CURRENT MODEL
+      </div>
+
+      <div id="creature-name">
+        BUTTERFLY
+      </div>
+
+    </div>
+    <div class="instructions">
+      <div class="instruction-line"></div>
+      OPEN AND CLOSE YOUR HAND TO CONTROL THE FORM
+      <div class="instruction-line"></div>
+    </div>
+
+    <div class="model-panel">
+      <div class="panel-heading">
+        SELECT MODEL
+      </div>
+      <div class="model-buttons">
+        <button
+          class="model-button active"
+          data-model="butterfly"
+          aria-pressed="true"
+        >
+          <span>01</span>
+          BUTTERFLY
+        </button>
+
+        <button
+          class="model-button"
+          data-model="jellyfish"
+          aria-pressed="false"
+        >
+          <span>02</span>
+          JELLYFISH
+        </button>
+
+        <button
+          class="model-button"
+          data-model="tree"
+          aria-pressed="false"
+        >
+          <span>03</span>
+          TREE
+        </button>
+        <button
+          class="model-button"
+          data-model="cactus"
+          aria-pressed="false"
+        >
+          <span>04</span>
+          CACTUS 
+        </button>
+      </div>
+    </div>
+
+
+    <div class="control-panel">
+      <div class="control-heading">
+        <span>PARTICLE EXPANSION</span>
+        <span id="expansion-value">0%</span>
+      </div>
+
+      <input
+        id="expansion"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      />
+
+      <div class="control-labels">
+
+        <span>FORM</span>
+        <span>CLOUD</span>
+
+      </div>
+
+      <div id="status">
+        BEEP BEEP INITIALIZING...
+      </div>
+      <div class="keyboard-hint">
+        PRESS SPACE TO EXPAND / CONTRACT
+      </div>
+    </div>
+
+    <div id="camera-panel" class="camera-panel camera-off">
+      <div class="camera-heading">
+        <span class="camera-indicator"></span>
+        <span>HAND TRACKING</span>
+      </div>
+
+      <div class="camera-preview">
+        <video
+          id="webcam-video"
+          autoplay
+          muted
+          playsinline
+        ></video>
+
+        <div id="camera-placeholder">
+          <span class="camera-placeholder-icon">◎</span>
+          <span>CAMERA OFF</span>
+        </div>
+      </div>
+
+      <div id="camera-status">
+        CAMERA OFF
+      </div>
+      <button id="camera-toggle" type="button">
+        TURN CAMERA ON
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

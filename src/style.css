@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #020108;
+  color: #ffffff;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+#scene-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+#scene-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.interface {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.top-header {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  right: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.logo span {
+  color: #a78bfa;
+  margin: 0 5px;
+}
+
+.system-status {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #aaa4c7;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #a78bfa;
+  border-radius: 50%;
+  margin-right: 9px;
+  box-shadow: 0 0 10px #a78bfa;
+}
+
+.creature-info {
+  position: absolute;
+  top: 17%;
+  left: 45px;
+}
+
+.eyebrow {
+  color: #8f86aa;
+  font-size: 8px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+#creature-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 17px;
+  letter-spacing: 4px;
+  color: #e6ddff;
+}
+
+.instructions {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  white-space: nowrap;
+  color: #8f86aa;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.instruction-line {
+  width: 25px;
+  height: 1px;
+  background: #65518f;
+}
+
+.model-panel {
+  position: absolute;
+  left: 40px;
+  bottom: 35px;
+  width: 225px;
+  padding: 18px;
+  background: rgba(12, 8, 28, 0.78);
+  border: 1px solid rgba(166, 139, 255, 0.2);
+  border-radius: 7px;
+  backdrop-filter: blur(15px);
+  pointer-events: auto;
+}
+
+.panel-heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #aaa0c7;
+  margin-bottom: 15px;
+}
+
+.model-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.model-button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid transparent;
+  color: #8d849f;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.model-button span {
+  color: #74658f;
+}
+
+.model-button:hover {
+  background: rgba(167, 139, 250, 0.08);
+  color: white;
+}
+
+.model-button.active {
+  background: rgba(167, 139, 250, 0.12);
+  border-color: rgba(167, 139, 250, 0.45);
+  color: #e4d9ff;
+}
+
+.model-button.active span {
+  color: #b99aff;
+}
+
+.control-panel {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+  width: min(350px, 90vw);
+  padding: 20px;
+  background: rgba(12, 8, 28, 0.82);
+  border: 1px solid rgba(166, 139, 255, 0.2);
+  border-radius: 7px;
+  backdrop-filter: blur(15px);
+  pointer-events: auto;
+}
+
+.control-heading,
+.control-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.control-heading {
+  color: #d4caff;
+}
+
+#expansion-value {
+  color: #b99aff;
+}
+
+#expansion {
+  display: block;
+  width: 100%;
+  margin: 22px 0 12px;
+  accent-color: #a78bfa;
+  cursor: pointer;
+}
+
+.control-labels {
+  color: #827a9e;
+  font-size: 8px;
+}
+
+#status {
+  margin-top: 20px;
+  text-align: center;
+
+  color: #b99aff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.keyboard-hint {
+  text-align: center;
+  margin-top: 12px;
+
+  color: #77718c;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.camera-panel {
+  position: absolute;
+  right: 35px;
+  bottom: 35px;
+  width: 220px;
+  padding: 12px;
+  background: rgba(12, 8, 28, 0.88);
+  border: 1px solid rgba(166, 139, 255, 0.25);
+  border-radius: 7px;
+  backdrop-filter: blur(15px);
+  pointer-events: auto;
+}
+
+.camera-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #c9baff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.camera-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #77718c;
+}
+
+.camera-active .camera-indicator {
+  background: #a78bfa;
+  box-shadow: 0 0 9px #a78bfa;
+}
+
+.camera-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #05030d;
+  border: 1px solid rgba(166, 139, 255, 0.2);
+  border-radius: 4px;
+}
+
+#webcam-video {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+#camera-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  height: 100%;
+  color: #77718c;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.camera-placeholder-icon {
+  font-size: 30px;
+  color: #a78bfa;
+  opacity: 0.7;
+}
+
+#camera-status {
+  margin: 10px 0;
+  color: #a99bc9;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 7px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#camera-toggle {
+  width: 100%;
+  padding: 10px;
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  border-radius: 4px;
+  color: #d9ccff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.3px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+#camera-toggle:hover {
+  background: rgba(167, 139, 250, 0.2);
+  border-color: #a78bfa;
+}
+
+#camera-toggle.camera-on {
+  background: rgba(167, 139, 250, 0.2);
+  color: #ffffff;
+}
+
+#camera-toggle:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+@media (max-width: 700px) {
+
+  .top-header {
+    left: 18px;
+    right: 18px;
+    top: 20px;
+  }
+
+  .creature-info {
+    left: 20px;
+    top: 13%;
+  }
+
+  .instructions {
+    top: 70px;
+    font-size: 7px;
+    gap: 7px;
+  }
+
+  .instruction-line {
+    width: 12px;
+  }
+
+  .model-panel {
+    left: 15px;
+    bottom: 175px;
+    width: 175px;
+    padding: 12px;
+  }
+
+  .control-panel {
+    bottom: 15px;
+    width: calc(100% - 30px);
+  }
+
+  .camera-panel {
+    right: 15px;
+    bottom: 175px;
+    width: 165px;
+    padding: 9px;
+  }
+
+  #camera-toggle {
+    font-size: 7px;
+    padding: 9px 5px;
+  }
+
+}
