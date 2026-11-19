@@ -55,4 +55,8 @@ npm run dev
 
 This project was made for educational and personal experimentation.
 
-**3D Model Credits:** 
+## 3D Model Credits:
+**Jellyfish Model:** https://grab3d.com/models/animals/jellyfish/
+**Tree Model:** https://grab3d.com/models/nature/apple-tree/
+**Cactus Model:** https://grab3d.com/models/nature/potted-cactus/
+**Butterfly Model:** https://skfb.ly/owKyp
